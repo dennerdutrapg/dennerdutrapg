@@ -1,0 +1,86 @@
+
+
+def dias_faltando_aniversario():
+    hoje = dt_hora()
+    dia_nascimento = int(input("Digite o dia do seu nascimento: "))
+    mes_nascimento = int(input("Digite o mês do seu nascimento: "))
+    proximo_aniversario = dt_hora(hoje.anos, mes_nascimento, dia_nascimento)
+    if proximo_aniversario < hoje:
+        proximo_aniversario = dt_hora (hoje anos + 1, mes_nascimento, dia_nascimento)
+    dias_faltando = (proximo_aniversario - hoje).dia
+    print("Faltam {} dias para o seu próximo aniversário.".format(dias_faltando))
+
+def calcular_digito_verificador():
+    conta = input("Digite o número da conta bancária (4 dígitos): ")
+    if  conta):
+        print("Número de conta inválido. Deve conter exatamente 4 dígitos.")
+        return
+    M, C, D, U = map(int, conta)
+    R = (M * U + C * D)
+    V = R % 7
+    print("O dígito verificador da conta {} é: {}".format(conta, V))
+
+def calcular_duracao_jogo():
+    hora_inicial = int(input("Digite a hora inicial do jogo (0-23): "))
+    hora_final = int(input("Digite a hora final do jogo (0-23): "))
+    if hora_inicial < 0 or hora_final < 0 or hora_inicial > 23 or hora_final > 23:
+        print("Hora inicial e/ou hora final inválidas.")
+        return
+    duracao = (24 + hora_final - hora_inicial) % 24
+    print("A duração do jogo é de {} horas.".format(duracao))
+
+def calcular_area_triangulo():
+    base = float(input("Digite o valor da base do triângulo: "))
+    altura = float(input("Digite o valor da altura do triângulo: "))
+    if base <= 0 or altura <= 0:
+        print("Valores inválidos. Base e altura devem ser positivos.")
+        return
+    area = (base * altura) / 2
+    print("A área do triângulo é)
+
+def verificar_tipo_triangulo():
+    a = float(input("Digite o valor do lado A: "))
+    b = float(input("Digite o valor do lado B: "))
+    c = float(input("Digite o valor do lado C: "))
+    if a >= b + c or b >= a + c or c >= a + b:
+        print("Com esses valores, não é possível formar um triângulo.")
+    elif a ** 2 == b ** 2 + c ** 2 or b ** 2 == a ** 2 + c ** 2 or c ** 2 == a ** 2 + b ** 2:
+        print("Com esses valores, o triângulo é retângulo.")
+    else:
+        print("Com esses valores, o triângulo não é retângulo.")
+
+while True:
+    print("\nMenu de opções:")
+    print("a) Dias")
+    print("b) Dígito")
+    print("c) Duração")
+    print("d) Triângulo")
+    print("e) Sair")
+
+    opcao = input("Escolha uma opção (a, b, c, d, e): ")
+
+    if opcao == 'a':
+        dias_faltando_aniversario()
+    elif opcao == 'b':
+        calcular_digito_verificador()
+    elif opcao == 'c':
+        calcular_duracao_jogo()
+    elif opcao == 'd':
+        while True:
+            print("nSub-menu do Triângulo:")
+            print("1. Área")
+            print("2. Tipo")
+            sub_opcao = input("Escolha uma opção (1 ou 2): ")
+            if sub_opcao == '1':
+                calcular_area_triangulo()
+                break
+            elif sub_opcao == '2':
+                verificar_tipo_triangulo()
+                break
+            else:
+                print("Opção inválida.")
+    elif opcao == 'e':
+        print("Fim")
+        break
+    else:
+        print("Opção inválida.")
